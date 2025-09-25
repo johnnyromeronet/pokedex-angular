@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { App } from './app';
 import { About } from './about/about';
+import { PokedexMain } from './pokedex-main/pokedex-main';
 
 export const routes: Routes = [
     {
         path: '',
-        component: App
+        component: PokedexMain
     },
     {
         path: 'about',

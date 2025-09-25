@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'ds-digi';
+    src: url('/assets/fonts/DS-DIGI.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ds-digi';
+    src: url('/assets/fonts/DS-DIGIB.TTF') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ds-digi';
+    src: url('/assets/fonts/DS-DIGII.TTF') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'ds-digi';
+    src: url('/assets/fonts/DS-DIGIT.TTF') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+.font-ds-digi {
+  font-family: 'ds-digi', sans-serif;
+}
