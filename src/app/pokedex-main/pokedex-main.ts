@@ -19,4 +19,22 @@ import { PokedexWeakness } from '../pokedex-weakness/pokedex-weakness';
 })
 export class PokedexMain {
 
+  data: any[] = [
+    {
+      id: 1,
+      name: 'Bulbasaur'
+    },
+    {
+      id: 2,
+      name: 'Ivysaur'
+    },
+    {
+      id: 3,
+      name: 'Venusaur'
+    }
+  ];
+
+  selectPokemon(pokemon: any) {
+    alert(`Has seleccionado a ${pokemon.name} `);
+  }
 }

@@ -1,3 +1,16 @@
-<div class="h-60 bg-gray-800 border-6 border-white rounded-md flex items-center justify-center shadow-sm shadow-black">
+<h3>Hay un total de {{data.length}} Pokémons</h3>
+<div class="h-60 bg-gray-800 border-6 border-white rounded-md shadow-sm shadow-black 
+         grid gap-2 p-2 overflow-auto justify-center" style="grid-template-columns: repeat(auto-fill, 64px);">
 
+    <img class="w-16 h-16 object-contain cursor-pointer" (click)="selectPokemon(data[0])"
+        [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/' + data[0].id + '.png'"
+        [alt]="data[0].name" />
+
+    <img class="w-16 h-16 object-contain cursor-pointer" (click)="selectPokemon(data[1])"
+        [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/' + data[1].id + '.png'"
+        [alt]="data[1].name" />
+
+    <img class="w-16 h-16 object-contain cursor-pointer" (click)="selectPokemon(data[2])"
+        [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/' + data[2].id + '.png'"
+        [alt]="data[2].name" />
 </div>

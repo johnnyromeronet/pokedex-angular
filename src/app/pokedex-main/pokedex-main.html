@@ -14,7 +14,7 @@
             </div>
 
             <!-- Pantalla -->
-            <app-pokedex-screen></app-pokedex-screen>
+            <app-pokedex-screen [data]="data" (notification)="selectPokemon($event)"></app-pokedex-screen>
 
             <!-- Controles -->
             <app-pokedex-control></app-pokedex-control>
