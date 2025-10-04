@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { PokedexScreen } from '../pokedex-screen/pokedex-screen';
 import { PokedexControl } from '../pokedex-control/pokedex-control';
 import { PokedexEvolution } from '../pokedex-evolution/pokedex-evolution';
 import { PokedexDetail } from '../pokedex-detail/pokedex-detail';
 import { PokedexWeakness } from '../pokedex-weakness/pokedex-weakness';
-import { Pokemon } from '@data/pokemon.model';
+import { PokedexService } from '@services/pokedex.service';
 
 @Component({
   selector: 'app-pokedex-main',
@@ -20,42 +20,11 @@ import { Pokemon } from '@data/pokemon.model';
 })
 export class PokedexMain {
 
-  data: Pokemon[] = [
-    {
-      id: 1,
-      name: 'Bulbasaur',
-      height: 1,
-      weight: 1,
-      sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png',
-      types: [],
-      stats: [],
-      weaknesses: []
-    },
-    {
-      id: 2,
-      name: 'Ivysaur',
-      height: 1,
-      weight: 1,
-      sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png',
-      types: [],
-      stats: [],
-      weaknesses: []
-    },
-    {
-      id: 3,
-      name: 'Venusaur',
-      height: 1,
-      weight: 1,
-      sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png',
-      types: [],
-      stats: [],
-      weaknesses: []
-    }
-  ];
+  private readonly _pokedexService = inject(PokedexService);
 
-  selectedPokemon: Pokemon = this.data[0];
+  data = this._pokedexService.data;
 
-  selectPokemon(pokemon: Pokemon) {
-    this.selectedPokemon = pokemon;
+  constructor() {
+    this._pokedexService.getPokemonList(50, 0);
   }
 }

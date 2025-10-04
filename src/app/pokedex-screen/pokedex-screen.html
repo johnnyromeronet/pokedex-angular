@@ -1,12 +1,15 @@
 <div class="h-60 bg-gray-800 border-6 border-white rounded-md shadow-sm shadow-black 
          grid gap-2 p-2 overflow-auto justify-center" style="grid-template-columns: repeat(auto-fill, 64px);">
-
-    <img class="w-16 h-16 object-contain cursor-pointer" (click)="selectPokemon(data[0])" [src]="data[0].sprite"
-        [alt]="data[0].name" />
-
-    <img class="w-16 h-16 object-contain cursor-pointer" (click)="selectPokemon(data[1])" [src]="data[1].sprite"
-        [alt]="data[1].name" />
-
-    <img class="w-16 h-16 object-contain cursor-pointer" (click)="selectPokemon(data[2])" [src]="data[2].sprite"
-        [alt]="data[2].name" />
+    @if(data()) {
+    @for(item of data()!.results; track item.name) {
+    <img class="w-16 h-16 object-contain cursor-pointer" (click)="selectPokemon(item)"
+        [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+ item.id + '.png'"
+        [alt]="item.name" />
+    }
+    @empty {
+    <p class="font-ds-digi text-xl text-white uppercase">No data.</p>
+    }
+    } @else {
+    <p class="font-ds-digi text-xl text-white uppercase">Loading...</p>
+    }
 </div>

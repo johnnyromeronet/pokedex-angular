@@ -1,23 +1,20 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Pokemon } from '@data/pokemon.model';
+import { Component, inject } from '@angular/core';
+import { PokemonResultResponse } from '@data/pokemon-response.model';
+import { PokedexService } from '@services/pokedex.service';
 
 @Component({
   selector: 'app-pokedex-screen',
-  imports: [],
   templateUrl: './pokedex-screen.html',
-  styleUrl: './pokedex-screen.css'
+  styleUrl: './pokedex-screen.css',
+  imports: []
 })
 export class PokedexScreen {
 
-  // Decoradores clásicos de Angular
-  @Input() data: Pokemon[] = [];
-  @Output() notification = new EventEmitter<any>();
+  private readonly _pokedexService = inject(PokedexService);
 
-  // Sistema moderno basado en Signals, orientado a reactividad
-  // data = input<any[]>([]); // devuelve una signal
-  // notification = output<any>();
+  data = this._pokedexService.data;
 
-  selectPokemon(pokemon: Pokemon) {
-    this.notification.emit(pokemon);
+  selectPokemon(pokemon: PokemonResultResponse) {
+    this._pokedexService.selected = pokemon;
   }
 }

@@ -1,7 +1,7 @@
 import { UpperCasePipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { Pokemon } from '@data/pokemon.model';
+import { Component, inject } from '@angular/core';
 import { PadZeroPipe } from '@pipes/pad-zero.pipe';
+import { PokedexService } from '@services/pokedex.service';
 
 @Component({
   selector: 'app-pokedex-control',
@@ -14,5 +14,7 @@ import { PadZeroPipe } from '@pipes/pad-zero.pipe';
 })
 export class PokedexControl {
 
-  @Input({ required: true }) data!: Pokemon;
+  private readonly _pokedexService = inject(PokedexService);
+  
+  selected = this._pokedexService.selected;
 }

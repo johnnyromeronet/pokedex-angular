@@ -15,8 +15,21 @@
     "target": "ES2022",
     "module": "preserve",
     "paths": {
-      "@data/*": ["./src/data/*"],
-      "@pipes/*": ["./src/pipes/*"]
+      "@data/*": [
+        "./src/data/*"
+      ],
+      "@pipes/*": [
+        "./src/pipes/*"
+      ],
+      "@environments/*": [
+        "./src/environments/*"
+      ],
+      "@services/*": [
+        "./src/services/*"
+      ],
+      "@interceptors/*": [
+        "./src/interceptors/*"
+      ]
     }
   },
   "angularCompilerOptions": {
