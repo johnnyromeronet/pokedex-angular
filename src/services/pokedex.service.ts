@@ -14,6 +14,8 @@ export class PokedexService {
   private readonly _data: WritableSignal<PokemonResponse | null> = signal(null);
   private readonly _selected: WritableSignal<PokemonResultResponse | null> = signal(null);
 
+  private readonly _limit: number = 1025;
+
   get data(): WritableSignal<PokemonResponse | null> {
     return this._data;
   }
@@ -27,18 +29,29 @@ export class PokedexService {
   }
 
   getPokemonList(limit: number, offset: number) {
-    this._pokeApiService
-      .getPokemonList(limit, offset)
-      .pipe(takeUntilDestroyed(this._destroyRef))
-      .subscribe((response: PokemonResponse) => {
-        const results = response.results.map(x => ({
-          id: Number(x.url.split('/').slice(-2, -1)[0]),
-          name: x.name,
-          url: x.url
-        }));
 
-        response.results = results;
-        this._data.set(response);
-      });
+    const data = this._data();
+    if (!data || data.results.length < this._limit) {
+      limit = limit + offset > this._limit ? (limit + offset) - this._limit : limit;
+
+      this._pokeApiService
+        .getPokemonList(limit, offset)
+        .pipe(takeUntilDestroyed(this._destroyRef))
+        .subscribe((response: PokemonResponse) => {
+
+          const results = response.results.map(x => ({
+            id: Number(x.url.split('/').slice(-2, -1)[0]),
+            name: x.name,
+            url: x.url
+          }));
+
+          response.results = results;
+          if (data) {
+            response.results.unshift(...data.results);
+          }
+
+          this._data.set(response);
+        });
+    }
   }
 }

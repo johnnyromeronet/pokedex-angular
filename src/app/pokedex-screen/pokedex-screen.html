@@ -1,5 +1,6 @@
 <div class="h-60 bg-gray-800 border-6 border-white rounded-md shadow-sm shadow-black 
-         grid gap-2 p-2 overflow-auto justify-center" style="grid-template-columns: repeat(auto-fill, 64px);">
+         grid gap-2 p-2 overflow-auto justify-center" style="grid-template-columns: repeat(auto-fill, 64px);"
+    (scroll)="onScroll($event)">
     @if(data()) {
     @for(item of data()!.results; track item.name) {
     <img class="w-16 h-16 object-contain cursor-pointer" (click)="selectPokemon(item)"

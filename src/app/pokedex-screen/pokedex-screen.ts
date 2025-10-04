@@ -17,4 +17,19 @@ export class PokedexScreen {
   selectPokemon(pokemon: PokemonResultResponse) {
     this._pokedexService.selected = pokemon;
   }
+
+  onScroll(event: Event) {
+    const element = event.target as HTMLElement;
+    const atBottom = element.scrollHeight - element.scrollTop === element.clientHeight;
+
+    if (atBottom) {
+      const data = this._pokedexService.data();
+      if (data && data.next) {
+        const params = new URL(data.next).searchParams;
+        const offset = Number(params.get('offset'));
+        const limit = Number(params.get('limit'));
+        this._pokedexService.getPokemonList(limit, offset);
+      }
+    }
+  }
 }
