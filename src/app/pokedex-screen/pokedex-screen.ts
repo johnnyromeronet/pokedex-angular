@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Pokemon } from '@data/pokemon.model';
 
 @Component({
   selector: 'app-pokedex-screen',
@@ -9,14 +10,14 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class PokedexScreen {
 
   // Decoradores clásicos de Angular
-  @Input() data: any[] = [];
+  @Input() data: Pokemon[] = [];
   @Output() notification = new EventEmitter<any>();
 
   // Sistema moderno basado en Signals, orientado a reactividad
   // data = input<any[]>([]); // devuelve una signal
   // notification = output<any>();
 
-  selectPokemon(pokemon: any) {
+  selectPokemon(pokemon: Pokemon) {
     this.notification.emit(pokemon);
   }
 }

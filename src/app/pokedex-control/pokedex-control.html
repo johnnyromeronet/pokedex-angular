@@ -1,4 +1,4 @@
-<div class="grid grid-cols-3 gap-4 mt-2 items-center">
+<div class="grid grid-cols-3 gap-2 mt-2 items-center">
     <!-- Columna izquierda -->
     <div class="flex justify-center">
         <div class="w-10 h-10 bg-gray-800 rounded-full border border-black shadow-sm shadow-black"></div>
@@ -9,14 +9,25 @@
             <div class="w-10 h-2 bg-red-400 rounded border border-black shadow-sm shadow-black cursor-pointer"></div>
             <div class="w-10 h-2 bg-blue-400 rounded border border-black shadow-sm shadow-black cursor-pointer"></div>
         </div>
-        <div class="w-full h-8 bg-green-400 rounded border border-black shadow-sm shadow-black"></div>
+        <div
+            class="w-full h-8 flex justify-start items-center p-2 bg-green-400 rounded border border-black shadow-sm shadow-black font-ds-digi text-xl truncate">
+            <p>
+                <span class="text-gray-600">#{{ data.id | padzero }}</span>
+                {{ data.name | uppercase }}
+            </p>
+        </div>
     </div>
     <!-- Columna derecha -->
     <div class="flex justify-center">
         <div class="relative w-16 h-16">
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-16 bg-gray-800 rounded shadow-sm shadow-black cursor-pointer"></div>
-            <div class="absolute top-1/2 left-0 -translate-y-1/2 w-16 h-6 bg-gray-800 rounded shadow-sm shadow-black cursor-pointer"></div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 bg-red-400 border-10 border-gray-800 rounded-full">
+            <div
+                class="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-16 bg-gray-800 rounded shadow-sm shadow-black cursor-pointer">
+            </div>
+            <div
+                class="absolute top-1/2 left-0 -translate-y-1/2 w-16 h-6 bg-gray-800 rounded shadow-sm shadow-black cursor-pointer">
+            </div>
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 bg-red-400 border-10 border-gray-800 rounded-full">
             </div>
         </div>
     </div>
