@@ -3,9 +3,9 @@
     (scroll)="onScroll($event)">
     @if(data()) {
     @for(item of data()!.results; track item.name) {
-    <img class="w-16 h-16 object-contain cursor-pointer" (click)="selectPokemon(item)"
+    <img class="w-16 h-16 object-contain cursor-pointer" (click)="selectPokemon(item)" [alt]="item.name"
         [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+ item.id + '.png'"
-        [alt]="item.name" />
+        [ngClass]="{'border border-dashed border-white rounded-md': selected()?.id === item.id}" />
     }
     @empty {
     <p class="font-ds-digi text-xl text-white uppercase">No data.</p>

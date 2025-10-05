@@ -3,6 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { PokemonDetail, PokemonType } from "@data/pokemon-detail.model";
 import { PokemonEvolution } from "@data/pokemon-evolution.model";
 import { PokemonResponse } from "@data/pokemon-response.model";
+import { PokemonSpecie } from "@data/pokemon-specie.model";
 import { environment } from "@environments/environment";
 import { Observable } from "rxjs";
 
@@ -27,7 +28,7 @@ export class PokeApiService {
         return this._httpClient.get<PokemonDetail>(url);
     }
 
-    getPokemonEvolutionChain(id: number) : Observable<PokemonEvolution> {
+    getEvolutionChain(id: number) : Observable<PokemonEvolution> {
         const url = `${environment.apiUrl}evolution-chain/${id}`;
         return this._httpClient.get<PokemonEvolution>(url);
     }    
@@ -35,5 +36,10 @@ export class PokeApiService {
     getType(name: string) : Observable<PokemonType> {
         const url = `${environment.apiUrl}type/${name}`;
         return this._httpClient.get<PokemonType>(url);
+    }
+
+    getSpecie(id: number) : Observable<PokemonSpecie> {
+        const url = `${environment.apiUrl}pokemon-species/${id}`;
+        return this._httpClient.get<PokemonSpecie>(url);
     }
 }

@@ -1,3 +1,4 @@
+import { NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { PokemonResultResponse } from '@data/pokemon-response.model';
 import { PokedexService } from '@services/pokedex.service';
@@ -6,13 +7,16 @@ import { PokedexService } from '@services/pokedex.service';
   selector: 'app-pokedex-screen',
   templateUrl: './pokedex-screen.html',
   styleUrl: './pokedex-screen.css',
-  imports: []
+  imports: [
+    NgClass
+  ]
 })
 export class PokedexScreen {
 
   private readonly _pokedexService = inject(PokedexService);
 
   data = this._pokedexService.data;
+  selected = this._pokedexService.selected;
 
   selectPokemon(pokemon: PokemonResultResponse) {
     this._pokedexService.selected = pokemon;
