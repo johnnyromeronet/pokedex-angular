@@ -1,7 +1,6 @@
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { Component, effect, inject } from '@angular/core';
 import { PokemonResultResponse } from '@data/pokemon-response.model';
-import { TypeColorDirective } from '@directives/type-color.directive';
 import { PadZeroPipe } from '@pipes/pad-zero.pipe';
 import { PokedexService } from '@services/pokedex.service';
 
@@ -12,7 +11,6 @@ import { PokedexService } from '@services/pokedex.service';
   imports: [
     NgTemplateOutlet,
     PadZeroPipe,
-    TypeColorDirective,
     NgClass
   ]
 })

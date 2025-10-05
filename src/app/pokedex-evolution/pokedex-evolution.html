@@ -25,7 +25,7 @@
 
 <ng-template #pokemonTemplate let-data>
     <div class="flex flex-row md:flex-col items-center justify-center flex-shrink-0 gap-2">
-        <div (click)="selectPokemon(data)" [ngClass]="{'border border-white': selected()?.id === item.id}"
+        <div (click)="selectPokemon(data)" [ngClass]="{'border border-white': selected()?.id === data.id}"
             class="w-24 h-24 rounded-full border-4 border-gray-400 flex justify-center items-center bg-gray-600 flex-shrink-0 cursor-pointer">
             <img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+ data.id + '.png'"
                 [alt]="data.name" class="w-32 h-32 object-contain">

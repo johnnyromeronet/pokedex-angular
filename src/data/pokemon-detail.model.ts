@@ -6,6 +6,7 @@ export interface PokemonDetail {
     types: PokemonType[];
     sprites: PokemonSprite[];
     stats: PokemonStat[];
+    abilities: PokemonAbility[];
 }
 
 export interface PokemonType {
@@ -28,6 +29,20 @@ export interface PokemonStat {
 }
 
 export interface PokemonStatDetail {
+    name: string;
+    url: string;
+}
+
+export interface PokemonStat {
+    name: string;
+    base: number;
+}
+
+export interface PokemonAbility {
+    ability: PokemonAbilityDetail;
+}
+
+export interface PokemonAbilityDetail {
     name: string;
     url: string;
 }

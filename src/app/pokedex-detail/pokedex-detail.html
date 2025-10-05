@@ -1,22 +1,25 @@
-<div class="grid grid-cols-2 gap-1 text-center text-white font-semibold">
-    <!-- Altura -->
-    <div class="bg-sky-500 rounded-md p-2 flex flex-col shadow-sm shadow-black">
-        <span class="text-sm text-gray-800 uppercase">Altura</span>
-        <span class="text-lg font-bold">0,7 m</span>
-    </div>
-    <!-- Categoría -->
-    <div class="bg-sky-500 rounded-md p-2 flex flex-col shadow-sm shadow-black">
-        <span class="text-sm text-gray-800 uppercase">Categoría</span>
-        <span class="text-lg font-bold">Semilla</span>
-    </div>
-    <!-- Peso -->
-    <div class="bg-sky-500 rounded-md p-2 flex flex-col shadow-sm shadow-black">
-        <span class="text-sm text-gray-800 uppercase">Peso</span>
-        <span class="text-lg font-bold">6,9 kg</span>
-    </div>
-    <!-- Habilidad -->
-    <div class="bg-sky-500 rounded-md p-2 flex flex-col shadow-sm shadow-black">
-        <span class="text-sm text-gray-800 uppercase">Habilidad</span>
-        <span class="text-lg font-bold">Espesura</span>
-    </div>
+<div class="grid grid-cols-3 gap-1 text-center text-white font-semibold font-ds-digi">
+
+    <ng-container *ngTemplateOutlet="detailTemplate; context: { $implicit: {
+        title: 'Height',
+        value: details() ? getMetricValue(details()!.height) + 'm' : '??'
+    } }"></ng-container>
+
+    <ng-container *ngTemplateOutlet="detailTemplate; context: { $implicit: {
+        title: 'Weight',
+        value: details() ? getMetricValue(details()!.weight) + 'kg' : '??'
+    } }"></ng-container>
+
+    <ng-container *ngTemplateOutlet="detailTemplate; context: { $implicit: {
+        title: 'Ability',
+        value: details() ? details()!.abilities[0].ability.name : '??'
+    } }"></ng-container>
+
 </div>
+
+<ng-template #detailTemplate let-data>
+    <div class="bg-sky-500 rounded-md p-2 flex flex-col shadow-sm shadow-black">
+        <span class="text-lg text-gray-800 uppercase">{{ data.title }}</span>
+        <span class="text-xl font-bold uppercase truncate">{{ data.value }}</span>
+    </div>
+</ng-template>
