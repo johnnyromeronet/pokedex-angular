@@ -2,12 +2,12 @@
 
     <ng-container *ngTemplateOutlet="detailTemplate; context: { $implicit: {
         title: 'Height',
-        value: details() ? getMetricValue(details()!.height) + 'm' : '??'
+        value: details() ? getMetricValue(details()!.height) + ' m' : '??'
     } }"></ng-container>
 
     <ng-container *ngTemplateOutlet="detailTemplate; context: { $implicit: {
         title: 'Weight',
-        value: details() ? getMetricValue(details()!.weight) + 'kg' : '??'
+        value: details() ? getMetricValue(details()!.weight) + ' kg' : '??'
     } }"></ng-container>
 
     <ng-container *ngTemplateOutlet="detailTemplate; context: { $implicit: {

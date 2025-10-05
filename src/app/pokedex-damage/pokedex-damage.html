@@ -1,0 +1,29 @@
+<div class="grid grid-cols-2 gap-1 font-ds-digi">
+
+    <ng-container *ngTemplateOutlet="damageTemplate; context: { $implicit: {
+        title: 'Strength',
+        values: damage() ? damage()!.double_damage_to : []
+    } }"></ng-container>
+
+    <ng-container *ngTemplateOutlet="damageTemplate; context: { $implicit: {
+        title: 'Weakness',
+        values: damage() ? damage()!.double_damage_from : []
+    } }"></ng-container>
+
+</div>
+
+<ng-template #damageTemplate let-data>
+    <div class="bg-white rounded-md p-3 shadow-sm shadow-black">
+        <h3 class="text-lg text-gray-800 font-semibold uppercase mb-2">{{ data.title }}</h3>
+        <div class="flex flex-wrap gap-1">
+            @for(item of data.values; track item.name) {
+            <span class="px-2 py-1 rounded-md font-extrabold text-xs" [class]="'bg-' + item.name">
+                {{item.name}}
+            </span>
+            }
+            @empty {
+            ??
+            }
+        </div>
+    </div>
+</ng-template>

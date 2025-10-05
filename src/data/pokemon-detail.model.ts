@@ -17,6 +17,12 @@ export interface PokemonType {
 export interface PokemonTypeDetail {
     name: string;
     url: string;
+    damage_relations: PokemonTypeDamageRelation;
+}
+
+export interface PokemonTypeDamageRelation {
+    double_damage_from: PokemonTypeDetail[];
+    double_damage_to: PokemonTypeDetail[];
 }
 
 export interface PokemonSprite {
@@ -31,11 +37,6 @@ export interface PokemonStat {
 export interface PokemonStatDetail {
     name: string;
     url: string;
-}
-
-export interface PokemonStat {
-    name: string;
-    base: number;
 }
 
 export interface PokemonAbility {

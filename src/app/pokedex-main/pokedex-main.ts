@@ -3,8 +3,9 @@ import { PokedexScreen } from '../pokedex-screen/pokedex-screen';
 import { PokedexControl } from '../pokedex-control/pokedex-control';
 import { PokedexEvolution } from '../pokedex-evolution/pokedex-evolution';
 import { PokedexDetail } from '../pokedex-detail/pokedex-detail';
-import { PokedexWeakness } from '../pokedex-weakness/pokedex-weakness';
+import { PokedexDamage } from '../pokedex-damage/pokedex-damage';
 import { PokedexService } from '@services/pokedex.service';
+import { PokedexStat } from '../pokedex-stat/pokedex-stat';
 
 @Component({
   selector: 'app-pokedex-main',
@@ -15,7 +16,8 @@ import { PokedexService } from '@services/pokedex.service';
     PokedexControl,
     PokedexEvolution,
     PokedexDetail,
-    PokedexWeakness
+    PokedexDamage,
+    PokedexStat
   ]
 })
 export class PokedexMain {

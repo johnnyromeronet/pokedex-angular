@@ -5,7 +5,7 @@
     @for(item of data()!.results; track item.name) {
     <img class="w-16 h-16 object-contain cursor-pointer" (click)="selectPokemon(item)" [alt]="item.name"
         [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+ item.id + '.png'"
-        [ngClass]="{'border border-dashed border-white rounded-md': selected()?.id === item.id}" />
+        [ngClass]="{'border border-dashed border-white rounded-md bg-gray-600': selected()?.id === item.id}" />
     }
     @empty {
     <p class="font-ds-digi text-xl text-white uppercase">No data.</p>

@@ -1,0 +1,37 @@
+<div class="grid grid-cols-6 gap-2 font-ds-digi">
+    @for(item of stats(); track item.name) {
+    <ng-container *ngTemplateOutlet="statTemplate; context: { $implicit: item }"></ng-container>
+    }
+    @empty {
+    @for(item of default; track item.index) {
+    <ng-container *ngTemplateOutlet="statTemplate; context: { $implicit: item }"></ng-container>
+    }
+    }
+</div>
+
+<ng-template #statTemplate let-data>
+    <div class="grid grid-cols-1">
+        <div class="grid grid-rows-10 gap-1">
+
+            @for(item of getArray(data.empty); track $index) {
+            <div class="bg-gray-800 rounded-md h-[10px] w-full opacity-20"></div>
+            }
+
+            @if(data.extra > 0) {
+            <div class="relative w-full h-[10px] rounded-md">
+                <div class="absolute inset-0 bg-gray-800 rounded-md opacity-20"></div>
+                <div class="absolute inset-y-0 left-0 bg-yellow-400 rounded-md shadow-sm shadow-black"
+                    [style.width]="data.extra + '%'">
+                </div>
+            </div>
+            }
+
+            @for(item of getArray(data.rows); track $index) {
+            <div class="rounded-md shadow-sm shadow-black h-[10px] w-full" [class.bg-yellow-400]="!data.over"
+                [class.bg-red-400]="data.over"></div>
+            }
+
+            <h3 class="text-sm text-white font-semibold uppercase w-full text-center truncate">{{ data.name }}</h3>
+        </div>
+    </div>
+</ng-template>

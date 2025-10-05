@@ -39,12 +39,12 @@
             <div class="flex justify-center gap-1 mt-1 flex-wrap">
                 @if(selected()?.id == data.id) {
                 @for(item of details()!.types; track item.type.name) {
-                <span class="px-2 py-1 rounded-md font-semibold text-xs" [class]="'bg-' + item.type.name">
+                <span class="px-2 py-1 rounded-md font-extrabold text-xs" [class]="'bg-' + item.type.name">
                     {{item.type.name}}
                 </span>
                 }
                 } @else {
-                <span class="px-2 py-1 rounded-md font-semibold text-xs">&nbsp;</span>
+                <span class="px-2 py-1 rounded-md font-extrabold text-xs">&nbsp;</span>
                 }
             </div>
         </div>

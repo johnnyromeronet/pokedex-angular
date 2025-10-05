@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { PokemonDetail, PokemonType } from "@data/pokemon-detail.model";
+import { PokemonDetail, PokemonTypeDetail } from "@data/pokemon-detail.model";
 import { PokemonEvolution } from "@data/pokemon-evolution.model";
 import { PokemonResponse } from "@data/pokemon-response.model";
 import { PokemonSpecie } from "@data/pokemon-specie.model";
@@ -33,9 +33,9 @@ export class PokeApiService {
         return this._httpClient.get<PokemonEvolution>(url);
     }    
 
-    getType(name: string) : Observable<PokemonType> {
+    getType(name: string) : Observable<PokemonTypeDetail> {
         const url = `${environment.apiUrl}type/${name}`;
-        return this._httpClient.get<PokemonType>(url);
+        return this._httpClient.get<PokemonTypeDetail>(url);
     }
 
     getSpecie(id: number) : Observable<PokemonSpecie> {

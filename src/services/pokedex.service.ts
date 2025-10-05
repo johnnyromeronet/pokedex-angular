@@ -2,7 +2,7 @@ import { DestroyRef, inject, Injectable, signal, WritableSignal } from "@angular
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { PokeApiService } from "./poke-api.service";
 import { PokemonResponse, PokemonResultResponse } from "@data/pokemon-response.model";
-import { PokemonDetail } from "@data/pokemon-detail.model";
+import { PokemonDetail, PokemonTypeDamageRelation, PokemonTypeDetail } from "@data/pokemon-detail.model";
 import { PokemonSpecie } from "@data/pokemon-specie.model";
 import { PokemonEvolution, PokemonEvolutionChain } from "@data/pokemon-evolution.model";
 
@@ -18,6 +18,7 @@ export class PokedexService {
   private readonly _selected: WritableSignal<PokemonResultResponse | null> = signal(null);
   private readonly _details: WritableSignal<PokemonDetail | null> = signal(null);
   private readonly _evolutions: WritableSignal<PokemonEvolution | null> = signal(null);
+  private readonly _damage: WritableSignal<PokemonTypeDamageRelation | null> = signal(null);
 
   private readonly _limit: number = 1025;
 
@@ -39,6 +40,10 @@ export class PokedexService {
 
   get evolutions(): WritableSignal<PokemonEvolution | null> {
     return this._evolutions;
+  }
+
+  get damage(): WritableSignal<PokemonTypeDamageRelation | null> {
+    return this._damage;
   }
 
   getPokemonList(limit: number, offset: number) {
@@ -90,6 +95,15 @@ export class PokedexService {
             this.fillEvolutionIds(response.chain);
             this._evolutions.set(response);
           });
+      });
+  }
+
+  getPokemonType(name: string) {
+    this._pokeApiService
+      .getType(name)
+      .pipe(takeUntilDestroyed(this._destroyRef))
+      .subscribe((response: PokemonTypeDetail) => {
+        this._damage.set(response.damage_relations);
       });
   }
 
