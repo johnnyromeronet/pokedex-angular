@@ -9,4 +9,5 @@ export interface PokemonResultResponse {
     id: number;
     name: string;
     url: string;
+    catched: boolean;
 }

@@ -1,13 +1,17 @@
 <div class="grid grid-cols-5 gap-2 mt-2 items-center">
     <!-- Columna izquierda -->
     <div class="flex justify-center">
-        <div class="w-10 h-10 bg-gray-800 rounded-full border border-black shadow-sm shadow-black"></div>
+        <div class="w-10 h-10 rounded-full border border-black shadow-sm shadow-black"
+            [class.bg-red-400]="selected() && !selected()!.catched" [class.bg-blue-400]="selected()?.catched"
+            [class.bg-gray-800]="!selected()"></div>
     </div>
     <!-- Columna central -->
     <div class="flex flex-col items-center gap-2 col-span-3">
         <div class="flex gap-2">
-            <div class="w-10 h-2 bg-red-400 rounded border border-black shadow-sm shadow-black cursor-pointer"></div>
-            <div class="w-10 h-2 bg-blue-400 rounded border border-black shadow-sm shadow-black cursor-pointer"></div>
+            <div class="w-10 h-2 bg-red-400 rounded border border-black shadow-sm shadow-black cursor-pointer"
+                (click)="catchPokemon(false)"></div>
+            <div class="w-10 h-2 bg-blue-400 rounded border border-black shadow-sm shadow-black cursor-pointer"
+                (click)="catchPokemon(true)"></div>
         </div>
         <div
             class="w-full h-8 flex justify-center items-center p-2 bg-green-400 rounded border border-black shadow-sm shadow-black font-ds-digi text-xl">
@@ -22,15 +26,32 @@
     <!-- Columna derecha -->
     <div class="flex justify-center col-start-5">
         <div class="relative w-16 h-16">
-            <div
-                class="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-16 bg-gray-800 rounded shadow-sm shadow-black cursor-pointer">
+            <!-- Botón ARRIBA -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-6 bg-gray-800 rounded shadow-sm shadow-black cursor-pointer"
+                (click)="move(-5)">
             </div>
-            <div
-                class="absolute top-1/2 left-0 -translate-y-1/2 w-16 h-6 bg-gray-800 rounded shadow-sm shadow-black cursor-pointer">
+
+            <!-- Botón ABAJO -->
+            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-6 bg-gray-800 rounded shadow-sm shadow-black cursor-pointer"
+                (click)="move(5)">
             </div>
-            <div
-                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 bg-red-400 border-10 border-gray-800 rounded-full">
+
+            <!-- Botón IZQUIERDA -->
+            <div class="absolute top-1/2 left-0 -translate-y-1/2 w-6 h-6 bg-gray-800 rounded shadow-sm shadow-black cursor-pointer"
+                (click)="move(-1)">
+            </div>
+
+            <!-- Botón DERECHA -->
+            <div class="absolute top-1/2 right-0 -translate-y-1/2 w-6 h-6 bg-gray-800 rounded shadow-sm shadow-black cursor-pointer"
+                (click)="move(1)">
+            </div>
+
+            <!-- Centro del control -->
+            <div [class.bg-red-400]="selected() && !selected()!.catched" [class.bg-blue-400]="selected()?.catched"
+                [class.bg-gray-600]="!selected()"
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 border-10 border-gray-800 rounded-full">
             </div>
         </div>
+
     </div>
 </div>

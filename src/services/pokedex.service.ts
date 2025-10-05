@@ -60,7 +60,8 @@ export class PokedexService {
           const results = response.results.map(x => ({
             id: this.getIdFromUrl(x.url),
             name: x.name,
-            url: x.url
+            url: x.url,
+            catched: false
           }));
 
           response.results = results;
